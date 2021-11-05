@@ -1,0 +1,105 @@
+<div class="container-fluid"><br><br><br>
+    <div class="card" >     
+        <div class="row card-body" >
+             <div class="col-md-4" style="text-align: center;" ><br><br>
+                <b style="font-family: Arial " ><br><br>
+                    Hora
+                </b> 
+                <div nz-row>
+                     <h1 style="margin-top:20px;color: rgb(6, 56, 27); font-family: Impact; font-weight: 500; border-color:black"> 
+                         {{now|date:'hh:mm:ss'}}
+                     </h1>
+                </div>
+             </div>
+             <div class="col-md-4 row">
+                 <div class="col-md-12" >
+                 <b style="font-family: Arial " ><br><br>
+                     Cuenta Regresiva
+                 </b> 
+                     <input type="number" [(ngModel)]="minuts" (ngModelChange)="MinutsChangue()" class="form-control" placeholder="Minutos" > 
+                 </div>
+                 <div class="col-md-12 row">
+                     <div class="col-md-6" style="text-align: center;" ><br>
+                         <button *ngIf=" PlayCrono == true " class="btn btn-success btn-circle btn-lg" (click)='startTimer()'> 
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                 <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                             </svg>
+                         </button>
+                         <button *ngIf=" PlayCrono == false " class="btn btn-success btn-circle btn-lg" disabled > 
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                 <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                             </svg>
+                         </button>
+                     </div>
+                     <div class="col-md-6" style="text-align: center;" ><br>
+                         <button *ngIf=" statusCrono == true " class="btn btn-danger btn-circle btn-lg" (click)='pauseTimer()'>  
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stop-fill" viewBox="0 0 16 16">
+                                 <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+                             </svg>
+                         </button>
+                         <button *ngIf=" statusCrono == false " class="btn btn-danger btn-circle btn-lg" disabled >  
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stop-fill" viewBox="0 0 16 16">
+                                 <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+                             </svg>
+                         </button>
+                     </div>
+                 </div>         
+                 <div *ngIf=" showCrono == true " class="col-md-12" style="text-align: center;" >
+                     <h2>
+                         {{ minutsLeft }} : {{ timeLeft }} 
+                     </h2>
+                 </div>
+                 
+             </div>
+             <div class="col-md-4 row">
+                <div class="col-md-12" style="text-align: center;" >
+                    <b style="font-family: Arial " ><br><br>
+                        Temporizador
+                    </b>     
+                </div>
+                <div class="col-md-12 row">
+                    <div class="col-md-6" style="text-align: center;" ><br>
+                        <button *ngIf=" TempoCrono == true " class="btn btn-default btn-circle btn-lg" (click)='startTimerTempo()'> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                            </svg>
+                        </button>
+                        <button *ngIf=" TempoCrono == false " class="btn btn-default btn-circle btn-lg" disabled > 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="col-md-6" style="text-align: center;" ><br>
+                        <button *ngIf=" statusTempo == true " class="btn btn-primary btn-circle btn-lg" (click)='pauseTimerTempo()'>  
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stop-fill" viewBox="0 0 16 16">
+                                <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+                            </svg>
+                        </button>
+                        <button *ngIf=" statusTempo == false " class="btn btn-primary btn-circle btn-lg" disabled >  
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stop-fill" viewBox="0 0 16 16">
+                                <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>         
+                <div class="col-md-12" style="text-align: center;" >
+                    <h2>
+                        {{ TempoMinuts }} : {{ TempoSeconds }} 
+                    </h2>
+                </div>
+                
+            </div>
+        </div>
+     
+    </div>
+
+    <div><br><br><br>
+        <button routerLink="/relojes" class="btn btn-primary" >
+            <
+        </button>
+        <button routerLink="/calendario" class="btn btn-primary" >
+            >
+        </button>
+    </div>
+</div> 

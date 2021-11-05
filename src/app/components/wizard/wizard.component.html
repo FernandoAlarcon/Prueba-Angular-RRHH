@@ -1,0 +1,57 @@
+<div>
+    <!-- <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
+        <a routerLink="/calendario" >
+
+          <ng-wizard-step (click)="RouteClick('calendario');"  [title]="'Calendario'" [description]="''"
+            [canEnter]="isValidTypeBoolean" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+            
+            <div>
+              
+               <app-relojes></app-relojes>  
+            </div> 
+          </ng-wizard-step>
+
+        </a>
+        <a routerLink="/relojes" >
+          
+          <ng-wizard-step (click)="RouteClick('relojes');" routerLink="/relojes" [title]="'Relojes'" [description]="''"  >
+            <div style="height: auto;" >
+               
+             
+            </div> 
+          </ng-wizard-step>
+
+        </a>
+        
+        <div>
+          <br><br>
+          <router-outlet></router-outlet>
+        </div>
+ 
+      </ng-wizard> -->
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a routerLink="/calendario" class="nav-link" >
+                Calendario
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/relojes" class="nav-link" >
+                Relojes
+              </a>
+            </li>  
+          </ul>
+         
+        </div>
+      </nav>
+
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+       
+</div>
